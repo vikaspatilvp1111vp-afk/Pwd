@@ -34,35 +34,31 @@
             padding: 20px;
         }
 
-        /* PAGE 1: SPLASH SCREEN CONTAINER */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
+            background: rgb(38, 34, 98);
+            color: var(--deep-navy);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
         }
 
         .logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: pulse 2.5s infinite ease-in-out;
         }
 
-        /* Image Reference Setup for Splash Logo Asset */
         .splash-image {
             width: 20rem;
             height: auto;
             margin-bottom: 20px;
-            filter: drop-shadow(0px 10px 20px rgba(10, 116, 218, 0.15));
         }
 
         .brand-text {
@@ -83,7 +79,7 @@
 
         .loader-bar {
             width: 150px;
-            height: 5px;
+            height:10px;
             background-color: #E2E8F0;
             margin-top: 45px;
             border-radius: 10px;
@@ -254,7 +250,7 @@
     <div id="splash-screen">
         <div class="logo-container">
             <!-- Points explicitly to the verified logo design resource -->
-            <img class="splash-image" src="pwd-logo.svg" alt="Omex Logo" onerror="this.style.display='none';">
+            <img class="splash-image" src="pwd.svg" alt="Omex Logo" onerror="this.style.display='none';">
         </div>
         <div class="loader-bar">
             <div class="loader-fill"></div>
@@ -266,7 +262,7 @@
         <div class="product-header">
              <div class="logo-container">
             <!-- Points explicitly to the verified logo design resource -->
-            <img class="splash-image" src="pwd-logo.svg" alt="Omex Logo" onerror="this.style.display='none';">
+            <img class="splash-image" src="pwd.svg" alt="Omex Logo" onerror="this.style.display='none';">
         </div>
             <!-- <h1 class="product-title">Omex®</h1> -->
             <!-- <div class="product-tag">Packaged Drinking Water</div> -->
