@@ -8,6 +8,7 @@
         :root {
             --primary-blue: #0A74DA;
             --dark-blue: #054A91;
+            --dark-black: #000000;
             --deep-navy: #0B2545;
             --light-bg: #EEF4F8;
             --card-bg: #FFFFFF;
@@ -148,7 +149,7 @@
 
         .info-card {
             background: linear-gradient(180deg, #FFFFFF 0%, var(--accent-cyan) 100%);
-            border: 1px solid #BAE6FD;
+            border: 2px solid #010101;
             padding: 16px;
             border-radius: 16px;
             text-align: center;
@@ -158,7 +159,7 @@
         .info-label {
             font-size: 0.8rem;
             font-weight: 700;
-            color: #000000;
+            color: var(--text-muted);;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
@@ -167,7 +168,7 @@
         .info-value {
             font-size: 1.2rem;
             font-weight: 800;
-            color: var(--dark-blue);
+            color: var(--dark-black);
         }
 
         /* INTERACTIVE SEARCH SECTOR */
@@ -179,7 +180,7 @@
         .search-input {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #CBD5E1;
+            border: 2px solid #000000;
             border-radius: 14px;
             font-size: 1rem;
             font-weight: 500;
@@ -275,7 +276,7 @@
         <div class="info-container">
             <div class="info-card">
                 <div class="info-label">Quantity</div>
-                <div class="info-value" >1 Litre</div>
+                <div class="info-value" >1000 ML</div>
             </div>
             <div class="info-card">
                 <div class="info-label">Retail Price</div>
@@ -286,6 +287,7 @@
         <!-- Dynamic User Search Gate -->
         <div class="search-box">
             <input type="text" id="batchSearch" class="search-input" placeholder="Type Batch No. (e.g., OX22)..." maxlength="10">
+            <p style="text-align: center; color: black; font-size: 16px; font-weight: 600;">Enter First two characters of Batch no. in the search bar & search</p>
         </div>
 
         <!-- High-Contrast Factory Metadata Drawer -->
