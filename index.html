@@ -158,7 +158,7 @@
         .info-label {
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--text-muted);
+            color: #000000;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
@@ -263,19 +263,23 @@
     <!-- PAGE 2: COLORIZED MAIN PRODUCT HUB -->
     <div id="main-content">
         <div class="product-header">
-            <h1 class="product-title">Omex®</h1>
-            <div class="product-tag">Packaged Drinking Water</div>
+             <div class="logo-container">
+            <!-- Points explicitly to the verified logo design resource -->
+            <img class="splash-image" src="pwd-logo.svg" alt="Omex Logo" onerror="this.style.display='none';">
+        </div>
+            <!-- <h1 class="product-title">Omex®</h1> -->
+            <!-- <div class="product-tag">Packaged Drinking Water</div> -->
         </div>
 
         <!-- Segmented Technical Data Grid -->
         <div class="info-container">
             <div class="info-card">
                 <div class="info-label">Quantity</div>
-                <div class="info-value">1 Litre</div>
+                <div class="info-value" >1 Litre</div>
             </div>
             <div class="info-card">
                 <div class="info-label">Retail Price</div>
-                <div class="info-value">Rs. 14/-</div>
+                <div class="info-value">Rs. 14/- <br> <div class="info-label" >Per 01 Litre</div></div>
             </div>
         </div>
 
