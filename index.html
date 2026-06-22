@@ -392,6 +392,8 @@
             }, 5000);
         });
 
+        const searchIcon = document.getElementById('searchIcon').addEventListener('click', searchCode);
+
         function searchCode() {
             console.log("Input triggerd")
             const firms = {
@@ -470,8 +472,6 @@
             const searchInput = document.getElementById('batchSearch');
             const resultPanel = document.getElementById('plantDetails');
             const infoContainer = document.getElementsByClassName('main-wrapper');
-            const searchIcon = document.getElementById('searchIcon');
-            searchIcon.addEventListener('click', (e) => {
                 const queryValue = searchInput.value.toUpperCase().trim();
                 if (queryValue.length >= 2) {
                     const firm = firms[queryValue];
@@ -488,7 +488,6 @@
                 } else {
                     resultPanel.style.display = 'none';
                 }
-            });
         }
     </script>
 </body>
