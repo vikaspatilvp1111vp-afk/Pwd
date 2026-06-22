@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +80,7 @@
 
         .loader-bar {
             width: 150px;
-            height:10px;
+            height: 10px;
             background-color: #E2E8F0;
             margin-top: 45px;
             border-radius: 10px;
@@ -94,18 +95,30 @@
         }
 
         @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
         }
 
         /* PAGE 2: MAIN PRODUCT CONTENT (Colorized Layout Upgrade) */
         #main-content {
-            display: none; 
+            display: none;
             width: 100%;
             max-width: 430px;
             background: var(--card-bg);
@@ -155,7 +168,8 @@
         .info-label {
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--text-muted);;
+            color: var(--text-muted);
+            ;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
@@ -203,8 +217,15 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .panel-heading {
@@ -220,7 +241,7 @@
 
         .address-text {
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin: 10px;
             font-size: 0.95rem;
             color: #E2E8F0;
             font-weight: 400;
@@ -240,10 +261,12 @@
             border-radius: 8px;
             font-weight: 700;
             font-size: 0.85rem;
+            margin: 10px;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
     </style>
 </head>
+
 <body>
 
     <!-- PAGE 1: SPLASH SCREEN (Featuring Your Local Design Asset) -->
@@ -260,10 +283,10 @@
     <!-- PAGE 2: COLORIZED MAIN PRODUCT HUB -->
     <div id="main-content">
         <div class="product-header">
-             <div class="logo-container">
-            <!-- Points explicitly to the verified logo design resource -->
-            <img class="splash-image" src="pwd.svg" alt="Omex Logo" onerror="this.style.display='none';">
-        </div>
+            <div class="logo-container">
+                <!-- Points explicitly to the verified logo design resource -->
+                <img class="splash-image" src="pwd.svg" alt="Omex Logo" onerror="this.style.display='none';">
+            </div>
             <!-- <h1 class="product-title">Omex®</h1> -->
             <!-- <div class="product-tag">Packaged Drinking Water</div> -->
         </div>
@@ -272,36 +295,36 @@
         <div class="info-container">
             <div class="info-card">
                 <div class="info-label">Quantity</div>
-                <div class="info-value" >1000 ML</div>
+                <div class="info-value">1000 ML</div>
             </div>
             <div class="info-card">
                 <div class="info-label">Retail Price</div>
-                <div class="info-value">Rs. 14/- <br> <div class="info-label" >Per 01 Litre</div></div>
+                <div class="info-value">Rs. 14/- <br>
+                    <div class="info-label">Per 01 Litre</div>
+                </div>
             </div>
         </div>
 
         <!-- Dynamic User Search Gate -->
         <div class="search-box">
-            <input type="text" id="batchSearch" class="search-input" placeholder="Type Batch No. (e.g., OX22)..." maxlength="10">
-            <p style="text-align: center; color: black; font-size: 16px; font-weight: 600;">Enter First two characters of Batch no. in the search bar & search</p>
+            <input type="text" id="batchSearch" class="search-input" placeholder="Type Batch No. (e.g., OX22)..."
+                maxlength="2" oninput="searchCode()">
+            <p style="text-align: center; color: black; font-size: 16px; font-weight: 600;">Enter First two characters
+                of Batch no. in the search bar & search</p>
         </div>
 
         <!-- High-Contrast Factory Metadata Drawer -->
         <div id="plantDetails" class="result-panel">
             <div class="panel-heading">Production Facility</div>
             <p class="address-text">
-                <strong>Omex Package Drinking Water</strong>
-                <br>
-                Plot no. 27-28,Main Road,
-                <br>
-                Awaam Nagar,ITARSI 461111,
-                <br>
-                Dist. Narmadapuram (MP), India.
-            </p>
+                <strong id="firmName"></strong>
+            <div id="address" style="margin: 10px;"></div>
             <div class="fssai-badge">
-                FSSAI Lic No: 10021051000142
+                FSSAI Lic No : <p id="fssai"> </p>
             </div>
         </div>
+        </p>
+    </div>
     </div>
 
     <script>
@@ -310,25 +333,108 @@
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 const main = document.getElementById('main-content');
-                
+
                 splash.style.opacity = '0';
                 splash.style.visibility = 'hidden';
                 main.style.display = 'block';
-            }, 5000); 
+            }, 5000);
         });
 
-        // Interactive validation handling character matching
-        const searchInput = document.getElementById('batchSearch');
-        const resultPanel = document.getElementById('plantDetails');
+        function searchCode() {
+            console.log("Input triggerd")
+            const firms = {
+                KT: {
+                    firmName: "Premium Beverages",
+                    address: "Plot no.27-28, Main Road, Awaam Nagar, ITARSI 461111 Dist. Narmadapuram (MP)",
+                    fssai: "11419110000072"
+                },
+                WC: {
+                    firmName: "Parshavnath Chilled Water",
+                    address: "Khoda Ganesh Road, Dhani Purohitan, Madanganj, KISHANGARH 305801 Dist. Ajmer (RJ)",
+                    fssai: "12214009000860"
+                },
+                XT: {
+                    firmName: "Ganga Narmada Mineral Water",
+                    address: "Rathi Industrial Area, Bikaner Road, NOKHA 334001 Dist. Bikaner (RJ)",
+                    fssai: "12214017000100"
+                },
+                YD: {
+                    firmName: "Vishwas Udyog LLP",
+                    address: "Village NAURANGBAS RAJPUTANA, Charkhi Dadri 127310 (HR)",
+                    fssai: "10822022000024"
+                },
+                CY: {
+                    firmName: "07 Sea Beverages",
+                    address: "Village KESUPURA, Tehsil Ellenabad, 125055 Dist. Sirsa (HR)",
+                    fssai: "10822019000112"
+                },
+                XN: {
+                    firmName: "Shri Krishna Beverages",
+                    address: "D-30, Site A, Industrial Area, MATHURA 281001 Dist. Mathura (UP)",
+                    fssai: "12714004000016"
+                },
+                FQ: {
+                    firmName: "Maa Vaishno Food & Beverages",
+                    address: "Barah Road, Near Sarkari Godown, LAHAR 477445 Dist. Bhind (MP)",
+                    fssai: "21423670000944"
+                },
+                ZA: {
+                    firmName: "Shri Balaji Beverages",
+                    address: "108, Main Road, Pali Pahari, Daily Raksa, JHANSI 284419 Dist. Jhansi (UP)",
+                    fssai: "12723013000089"
+                },
+                PJ: {
+                    firmName: "Qooz Industries OPC Pvt. Ltd.",
+                    address: "F-84,85,86, UPSIDC Industrial Area, Malwan, FATEHPUR 212664 Dist. Fatehpur (UP)",
+                    fssai: "12724007000098"
+                },
+                QN: {
+                    firmName: "Maera Food & Beverages",
+                    address: "G1 514, RIICO Growth Center, DHOLPUR 328001 Dist. Dholpur (RJ)",
+                    fssai: "12226243000013"
+                },
+                LB: {
+                    firmName: "Gaurav Food & Beverages",
+                    address: "Near Krishna Tent House, Sadbhavna Nagar, Makroniya, SAGAR 470004 (MP)",
+                    fssai: "11420470000014"
+                },
+                SJ: {
+                    firmName: "Swariya Food and Beverages",
+                    address: "Opposite Petrol Pump, Durgapuri Colony, CHHABRA 325220 Dist. Baran (RJ)",
+                    fssai: "22225034000481"
+                },
+                NX: {
+                    firmName: "Ayush Chilled Water",
+                    address: "522/9, Village POKHARNI 461441 Dist. Harda (MP)",
+                    fssai: "11424130000008"
+                },
+                OZ: {
+                    firmName: "Nitya Beverages",
+                    address: "57/4/2, Dedhwara, NARSINGHPUR 487001 Dist. Narsinghpur (MP)",
+                    fssai: "11419290000094"
+                }
+            };
 
-        searchInput.addEventListener('input', (e) => {
-            const queryValue = e.target.value.trim();
-            if (queryValue.length >= 2) {
-                resultPanel.style.display = 'block';
-            } else {
-                resultPanel.style.display = 'none';
-            }
-        });
+            const searchInput = document.getElementById('batchSearch');
+            const resultPanel = document.getElementById('plantDetails');
+            searchInput.addEventListener('input', (e) => {
+                const queryValue = e.target.value.toUpperCase().trim();
+                if (queryValue.length >= 2) {
+                    const firm = firms[queryValue];
+                    if (firm) {
+                        document.getElementById("firmName").textContent = firm.firmName;
+                        document.getElementById("address").textContent = firm.address;
+                        document.getElementById("fssai").textContent = firm.fssai;
+                        resultPanel.style.display = 'block';
+                    } else {
+                        resultPanel.style.display = 'none';
+                    }
+                } else {
+                    resultPanel.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
+
 </html>
